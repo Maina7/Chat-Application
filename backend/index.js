@@ -40,9 +40,12 @@ app.use(express.json({limit: "5mb"}))
 app.use(cors())
 
 //Routes set-up
-app.use("/",(req,res)=>res.send("Server is live"))
 app.use("/api/auth",userRouter)
 app.use("/api/messages",messageRouter)
+
+app.get("/", (req,res)=>{
+    res.send("Chat application is running")
+})
 
 await connectDB();
 
